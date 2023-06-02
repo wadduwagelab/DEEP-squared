@@ -1,4 +1,4 @@
-from model import UNet
+from Modules.model import UNet
 import torch
 import numpy as np
 import matplotlib.pyplot as plt

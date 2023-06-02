@@ -41,13 +41,12 @@ class HDF5Dataset(Dataset):
         return len(self.ground_truth)
 
     def __getitem__(self, index):
-        if target.max() == 0:
-            continue
-        else:
-            img = self.measurement[index]
-            target = self.ground_truth[index]
-            _img = torch.from_numpy(np.divide(img,self.max_im)).float()
-            _target = torch.from_numpy(np.divide(target,self.max_gt)).float()
+
+    
+        img = self.measurement[index]
+        target = self.ground_truth[index]
+        _img = torch.from_numpy(np.divide(img,self.max_im)).float()
+        _target = torch.from_numpy(np.divide(target,self.max_gt)).float()
 
         return _img,_target
     

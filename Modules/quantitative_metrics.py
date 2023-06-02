@@ -1,11 +1,11 @@
 import torch
 import numpy as np
-from eval_metrics import *
+from Modules.eval_metrics import *
 from skimage.metrics import peak_signal_noise_ratio as psnr 
 import h5py
 import torch.nn as nn
 import statistics
-from model import UNet
+from Modules.model import UNet
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -44,22 +44,9 @@ def quantitative_metrics(args,directory,test_file,max_gt,max_im):
         out = out/out.max()       
         out_img_ = out.detach().cpu()
         
-        # print(f'out shape {out.shape}')
-        # out_img = out.data[0] 
-        # print(f'1. out_img shape {out_img.shape}')
-        # out_img = np.squeeze(out_img)
-        # print(f'2. out_img shape {out_img.shape}')
-        # print(f'2. GT shape {GT.shape}')
+ 
         GT_ = GT.unsqueeze(dim=0)
-        # print(f'2. GT shape {GT.shape}')
         
-        
-
-        # out_img_ = torch.from_numpy(np.expand_dims(out_img, [0, 1]))
-        # print(f'3. out_img_ shape {out_img_.shape}')
-        # GT_ = torch.from_numpy(np.expand_dims(GT, [0, 1]))
-        # print(f'3. GT_ shape {GT_.shape}')
-
         out_img_norm = (out_img_ - out_img_.min())/(out_img_.max() - out_img_.min())
         GT_norm = (GT_ - GT_.min())/(GT_.max() - GT_.min())
 

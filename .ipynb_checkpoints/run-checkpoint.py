@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import sys
 import torch 
 from Modules.support_train import HDF5Dataset,RMSLELoss,AverageMeter
-import Modules.model
+import model
 import argparse
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader, Dataset, WeightedRandomSampler
