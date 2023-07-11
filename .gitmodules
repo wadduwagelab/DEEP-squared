@@ -1,0 +1,3 @@
+[submodule "fwd_model/_submodules/MC_LightScattering"]
+	path = fwd_model/_submodules/MC_LightScattering
+	url = https://github.com/dushanw/MC_LightScattering.git
