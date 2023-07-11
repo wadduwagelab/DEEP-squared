@@ -46,9 +46,9 @@ def qualitative_eval(args,directory,test_file,max_gt,max_im):
         
         
         
-        predict_path= args.save_path 
-        if not os.path.exists(predict_path):
-            os.makedirs(predict_path)
+    
+        if not os.path.exists(args.output_path):
+            os.makedirs(args.output_path)
         plt.rcParams["figure.figsize"] = (200,200)
         fontprops = fm.FontProperties(size=150)
         
@@ -71,7 +71,7 @@ def qualitative_eval(args,directory,test_file,max_gt,max_im):
         axarr[3].set_title('Target')
         axarr[3].title.set_size(180)
         
-        f.savefig(predict_path + str(args.idx) + '_prediction.png')
+        f.savefig(args.output_path + str(args.idx) + '_prediction.png')
         plt.show()
         
         

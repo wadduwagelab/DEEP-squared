@@ -54,6 +54,7 @@ def main():
     parser.add_argument('--case', type=str, default= 'Beads4SLS', help='Beads4SLS/Neuronal2SLS/Neuronal6SLS/BV2SLS/BV4SLS/BV6SLS/OWNDATA')
     parser.add_argument('--lossfunc', type=str, default= 'KLDiv', help='KLDiv/RMSLE/MSE/L1')
     parser.add_argument('--experiment_name', type=str, default= 'sample', help='experiment name will be the name of the folder')
+    parser.add_argument('--save_model_path', type=str, default= None, help='path to the folder to store the model checkpoints')
     parser.add_argument('--batch-size', type=int, default=10, metavar='N',
                         help='input batch size for training (default: 10)')
     parser.add_argument('--epochs', type=int, default=100, metavar='N',
@@ -71,7 +72,7 @@ def main():
     parser.add_argument('--n_patterns', type=str, default= 32, help='1/2/4/8/16/32') 
     parser.add_argument('--max_im', type=int, default= None, help='Give the maximum of input image to normalize them') 
     parser.add_argument('--max_gt', type=int, default= None, help='Give the maximum of ground truth image to normalize them')
-    parser.add_argument('--data_path', type=int, default= None, help='path to the folder where the test data is stored')
+    parser.add_argument('--data_path', type=str, default= None, help='path to the folder where the test data is stored')
     
     args = parser.parse_args(args=[])
     
@@ -118,7 +119,7 @@ def main():
         img_dir = args.data_path
 
 
-    model_path = f"/n/home12/mithunjha/common_python/models/{args.case}/{args.experiment_name}"
+    model_path = f"{args.save_model_path}/{args.case}/{args.experiment_name}"
     os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 
     print(f'The case is {args.case}')

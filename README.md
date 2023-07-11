@@ -37,7 +37,7 @@ pip install -r requirements.txt
 Use the following code to train the model for a particular dataset case and loss function.
 
 ```python
-python3 run.py --case <CASE> --lossfunc <LOSS_FUNCTION> --experiment_name <EXPERIMENT_NAME> --epochs <#EPOCHS>
+python3 run.py --case <CASE> --save_model_path <PATH_TO_A_FOLDER> --lossfunc <LOSS_FUNCTION> --experiment_name <EXPERIMENT_NAME> --epochs <#EPOCHS>
 ```
 
 ### Evaluation

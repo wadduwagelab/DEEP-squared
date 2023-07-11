@@ -10,11 +10,10 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 def parse_option():
     parser = argparse.ArgumentParser('Argument for Validation')
     parser.add_argument('--case', type=str, default= 'Beads4SLS', help='Beads4SLS/Neuronal2SLS/Neuronal6SLS/BV2SLS/BV4SLS/BV6SLS/OWNDATA')
-    parser.add_argument('--output_path', type=str, default='/n/home12/mithunjha/common_python', help='output folder name')
-    parser.add_argument('--model_path', type=str, default=f'/n/home12/mithunjha/common_python/models/Beads5SLS/DEEP2-45/fcn_deep_best.pth',help='model path')
+    parser.add_argument('--output_path', type=str, default=None, help='output folder name')
+    parser.add_argument('--model_path', type=str, default=None ,help='model path')
     parser.add_argument('--n_patterns', type=str, default= 32, help='1/2/4/8/16/32') 
     parser.add_argument('--idx', type=int, default= 20, help='any interger value <= 127') 
-    parser.add_argument('--save_path', type = str, default = '/n/home12/mithunjha/GITHUB_deep2/', help = 'save folder name')
     
     opt = parser.parse_args()
     parser.add_argument('--max_im', type=int, default= None, help='Give the maximum of input image to normalize them') 
