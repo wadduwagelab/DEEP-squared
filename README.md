@@ -16,7 +16,7 @@ If you find our work or this repository useful, please consider giving a star тн
 
 This repository contains the implementation of the physics-informed forward model, which generates simulated DEEP image stacks, and the DEEP-squared inverse model, which reconstructs de-scattered images from 32 patterned DEEP-TFM measurements.
 
-![Figure1_method](https://github.com/Mithunjha/DEEP2/assets/67052077/1bf527a2-c3fa-4fb9-97d5-a901eb3d1427)
+![Figure1_method](https://github.com/Mithunjha/DEEP-squared/assets/67052077/d0deba89-53f6-48b5-b766-ec86b3867423)
 
 ## Getting Started
 ### Installation
@@ -58,7 +58,6 @@ The quantitative and qualitative output for the **Beads 4SLS** dataset case foll
 
 **PSNR** : 39.1606 (1.8238)
 
-![20_prediction](https://github.com/Mithunjha/DEEP2/assets/67052077/caccf1b1-277f-4943-b22b-7ec424c20993)
-
+![20_prediction](https://github.com/Mithunjha/DEEP-squared/assets/67052077/df73007b-56d1-45c5-9285-46fad918781d)
 
 
