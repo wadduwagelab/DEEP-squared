@@ -4,8 +4,8 @@
 If you find our work or this repository useful, please consider giving a star ⭐ and a citation.
 
 ```
-@misc{wijethilake2022deep2,
-      title={DEEP-squared: Deep Learning Powered De-scattering with Excitation Patterning}, 
+@misc{deepsquared2022,
+      title={DEEP2: Deep Learning Powered De-scattering with Excitation Patterning}, 
       author={Navodini Wijethilake and Mithunjha Anandakumar and Cheng Zheng and Peter T. C. So and Murat Yildirim and Dushan N. Wadduwage},
       year={2022},
       eprint={2210.10892},
@@ -48,7 +48,7 @@ Use the following code to evaluate the performance of the pre-trained model for 
 python3 validation.py --case <CASE> --model_path <MODEL_PATH> --output_path <OUTPUT_PATH>
 ```
 ### Sample output
-The quantitative and qualitative output for the **Beads 4SLS** dataset case follows.
+The quantitative and qualitative output for the **Beads 4 SLS** dataset case follows.
 
 *Evaluation metric : mean value for the entire test dataset (standard deviation)* 
 
