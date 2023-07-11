@@ -34,12 +34,31 @@ pip install -r requirements.txt
 
 ### Training
 
+Use the following code to train the model for a particular dataset case and loss function.
+
 ```python
-python3 run.py <CASE> <DATA_PATH> <>
+python3 run.py --case <CASE> --lossfunc <LOSS_FUNCTION> --experiment_name <EXPERIMENT_NAME> --epochs <#EPOCHS>
 ```
 
 ### Evaluation
 
+Use the following code to evaluate the performance of the pre-trained model for any dataset case.
+
 ```python
-python3 validation.py --case <CASE> --model_path <MODEL_PATH> --
+python3 validation.py --case <CASE> --model_path <MODEL_PATH> --output_path <OUTPUT_PATH>
+```
+### Sample output
+The quantitative and qualitative output for the **Beads 4SLS** dataset case follows.
+
+*Evaluation metric : mean value for the entire test dataset (standard deviation)* 
+
+**MSE error** : 0.00013 (5.8144e-05)
+
+**SSIM** : 0.7874(0.1295)
+
+**PSNR** : 39.1606 (1.8238)
+
+![20_prediction](https://github.com/Mithunjha/DEEP2/assets/67052077/caccf1b1-277f-4943-b22b-7ec424c20993)
+
+
 
