@@ -1,6 +1,0 @@
-matplotlib
-h5py
-numpy
-scikit-image
-statistics
-argparse
