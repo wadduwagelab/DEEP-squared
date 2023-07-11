@@ -54,7 +54,7 @@ def main():
     parser.add_argument('--case', type=str, default= 'Beads4SLS', help='Beads4SLS/Neuronal2SLS/Neuronal6SLS/BV2SLS/BV4SLS/BV6SLS/OWNDATA')
     parser.add_argument('--lossfunc', type=str, default= 'KLDiv', help='KLDiv/RMSLE/MSE/L1')
     parser.add_argument('--experiment_name', type=str, default= 'sample', help='experiment name will be the name of the folder')
-    parser.add_argument('--save_model_path', type=str, default= None, help='path to the folder to store the model checkpoints')
+    parser.add_argument('--save_model_path', type=str, default= 'Models', help='path to the folder to store the model checkpoints')
     parser.add_argument('--batch-size', type=int, default=10, metavar='N',
                         help='input batch size for training (default: 10)')
     parser.add_argument('--epochs', type=int, default=100, metavar='N',
