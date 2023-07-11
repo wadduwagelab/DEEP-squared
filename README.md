@@ -48,7 +48,7 @@ Use the following code to evaluate the performance of the pre-trained model for 
 python3 validation.py --case <CASE> --model_path <MODEL_PATH> --output_path <OUTPUT_PATH>
 ```
 ### Sample output
-The quantitative and qualitative output for the **Beads 4 SLS** dataset case follows.
+The quantitative and qualitative output for the **Beads 4 Scattering Lengths** dataset case follows.
 
 *Evaluation metric : mean value for the entire test dataset (standard deviation)* 
 
