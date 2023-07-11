@@ -31,12 +31,13 @@ def read_h5py(path, isVal):
         return _target, _img
 
 class HDF5Dataset(Dataset):
-    def __init__(self,img_dir, PSF_path, max_im, max_gt, isVal= False, transform=None):
+    def __init__(self,img_dir, max_im, max_gt, n_patterns, isVal= False, transform=None):
         self.img_dir = img_dir
         self.max_im = max_im
         self.max_gt = max_gt
         self.ground_truth, self.measurement = read_h5py(self.img_dir,isVal)
         self.transform = transform 
+        self.n_patterns = n_patterns
     def __len__(self):
         return len(self.ground_truth)
 
@@ -47,7 +48,7 @@ class HDF5Dataset(Dataset):
         target = self.ground_truth[index]
         _img = torch.from_numpy(np.divide(img,self.max_im)).float()
         _target = torch.from_numpy(np.divide(target,self.max_gt)).float()
-
+        _img = _img[0:self.n_patterns,:,:]
         return _img,_target
     
     

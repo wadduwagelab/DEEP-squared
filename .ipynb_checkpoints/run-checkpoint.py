@@ -1,16 +1,14 @@
-from __future__ import print_function
 import os
-import random
 import numpy as np
 import h5py
 import matplotlib.pyplot as plt
 import sys
 import torch 
 from Modules.support_train import HDF5Dataset,RMSLELoss,AverageMeter
-import model
+import Modules.model
 import argparse
 import torch.optim as optim
-from torch.utils.data import TensorDataset, DataLoader, Dataset, WeightedRandomSampler
+from torch.utils.data import DataLoader, Dataset
 from torch.optim.lr_scheduler import StepLR
 from Modules.model import UNet
 import warnings
@@ -49,7 +47,8 @@ elif case == 'Neuronal6SLS':
     max_gt = 22.953955
 
 
-os.mkdir("/n/home12/mithunjha/common_python/models/"+case+"/"+experiment_name)
+    
+
 model_path = f"/n/home12/mithunjha/common_python/models/{case}/{experiment_name}"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 
@@ -100,26 +99,28 @@ def main(img_dir):
                         help='random seed (default: 100)')
     parser.add_argument('--output_nc', type=int, default=1, metavar='N',
                         help='output channels')
-    
+    parser.add_argument('--use_gpu', action='store_true', default=True,
+                        help='enables CUDA training')
+    parser.add_argument('--n_patterns', type=str, default= 32, help='1/2/4/8/16/32') 
     args = parser.parse_args(args=[])
     
     
-    use_cuda = not args.no_cuda and torch.cuda.is_available()
+    use_cuda = args.use_gpu and torch.cuda.is_available()
     torch.manual_seed(args.seed)
     device = torch.device("cuda" if use_cuda else "cpu")
     kwargs = {'num_workers': 2, 'pin_memory': True} if use_cuda else {}
 
     
     ### Data loader ###################
-    train_dataset = HDF5Dataset(img_dir=img_dir, max_im = max_im, max_gt = max_gt, isTrain=True)
-    test_dataset = HDF5Dataset(img_dir=img_dir, max_im = max_im, max_gt = max_gt, isTrain=False)
+    train_dataset = HDF5Dataset(img_dir=img_dir, max_im = max_im, max_gt = max_gt, n_patterns=args.n_patterns, isVal=False)
+    test_dataset = HDF5Dataset(img_dir=img_dir, max_im = max_im, max_gt = max_gt, n_patterns=args.n_patterns ,isVal=True)
 
     train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0, drop_last=True)
 
     test_loader = DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0, drop_last=True)
 
     ### Model initialization ##########
-    model = UNet(n_classes=args.output_nc).cuda()
+    model = UNet(n_classes=args.output_nc,n_patterns = args.n_patterns).cuda()
     model = torch.nn.parallel.DataParallel(model)
     
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
@@ -154,7 +155,8 @@ def main(img_dir):
         print("epoch:%.1f" %epoch, "Train_loss:%.4f" % tloss, "Val_loss:%.4f" % vloss)
         scheduler.step()
         try:
-            os.makedirs(model_path)
+            if not os.path.exists(model_path):
+                os.makedirs(model_path)
         except OSError:
             pass
         if val_loss>=vloss : 

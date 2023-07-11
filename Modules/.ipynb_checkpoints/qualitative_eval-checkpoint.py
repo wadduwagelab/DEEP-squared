@@ -23,7 +23,7 @@ def qualitative_eval(args,directory,test_file,max_gt,max_im):
             modalities = db['input'][id_]
             GT_ = db['gt'][id_]
 
-        # mod_sum = np.sum(modalities,axis = 0)
+        
         GT = torch.from_numpy(np.divide(GT_,max_gt))
         img = torch.from_numpy(np.divide(modalities,max_im)[None, :, :]).float()
         img = img[:,0:args.n_patterns,:,:]
@@ -38,13 +38,15 @@ def qualitative_eval(args,directory,test_file,max_gt,max_im):
         out_img = np.squeeze(out)
         GT = np.squeeze(GT)
         
-        _img_avg = np.sum(modalities, axis=0)/32
+        print(img.shape)
+        _img_avg = torch.mean(img.squeeze(), dim=0)
+        print(_img_avg.shape)
         out_img = out_img - out_img.min()
         _img_avg = _img_avg/_img_avg.max()
         
         
         
-        predict_path= args.save_path #'/n/home12/mithunjha/GITHUB_deep2/'
+        predict_path= args.save_path 
         if not os.path.exists(predict_path):
             os.makedirs(predict_path)
         plt.rcParams["figure.figsize"] = (200,200)
@@ -53,21 +55,22 @@ def qualitative_eval(args,directory,test_file,max_gt,max_im):
  
         f, axarr = plt.subplots(1,4)
         
-        img_sum_ = axarr[0].imshow(img[:,0,:,:].squeeze(),cmap='inferno')#mod_sum
+        img_single_ = axarr[0].imshow(img[:,0,:,:].squeeze(),cmap='inferno')#mod_sum
         axarr[0].set_title('Single Patterned Input Image')
         axarr[0].title.set_size(180)
+        
         img_avg_ = axarr[1].imshow(_img_avg,cmap='inferno')
-     
         axarr[1].set_title('Average Patterned Input Image')
         axarr[1].title.set_size(180)
-        img_ptn_ = axarr[2].imshow(out_img/out_img.max(),cmap='inferno')
         
+        img_ptn_ = axarr[2].imshow(out_img/out_img.max(),cmap='inferno')
         axarr[2].set_title('Prediction')
         axarr[2].title.set_size(180)
-        img_tar_ = axarr[3].imshow(GT,cmap='inferno')
         
+        img_tar_ = axarr[3].imshow(GT,cmap='inferno')
         axarr[3].set_title('Target')
         axarr[3].title.set_size(180)
+        
         f.savefig(predict_path + str(args.idx) + '_prediction.png')
         plt.show()
         

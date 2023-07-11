@@ -7,6 +7,8 @@ import torch.nn as nn
 import statistics
 from Modules.model import UNet
 import warnings
+
+
 warnings.filterwarnings('ignore')
 
 def quantitative_metrics(args,directory,test_file,max_gt,max_im):
@@ -31,11 +33,11 @@ def quantitative_metrics(args,directory,test_file,max_gt,max_im):
             modalities = db['input'][i]
             GT_ = db['gt'][i]
     
-        mod_sum = np.sum(modalities,axis = 0)
+        # mod_sum = np.sum(modalities,axis = 0)
         GT = torch.from_numpy(np.divide(GT_,max_gt))
         img = torch.from_numpy(np.divide(modalities,max_im)[None, :, :]).float()
         img = img[:,0:args.n_patterns,:,:]
-        _img_avg = np.sum(modalities, axis=0)/32
+        # _img_avg = np.sum(img, axis=0)/args.n_patterns
         
         netG = netG.cuda()
         out = netG(img.cuda())
