@@ -43,7 +43,7 @@ def main():
     elif args.case == 'Neuronal6SLS':
         max_im = 33.970192 
         max_gt = 22.953955
-        directorys = '/n/holylabs/LABS/wadduwage_lab/Lab/dataset_mithu/20-Aug-2022/dmd_exp_tfm_mouse_20201224_300um/'
+        directory = '/n/holylabs/LABS/wadduwage_lab/Lab/dataset_mithu/20-Aug-2022/dmd_exp_tfm_mouse_20201224_300um/'
         # train_file = 'mouse_neuronal_300um_data_6sls_2.295395e+01mc_tr.h5'
         test_file = 'mouse_neuronal_300um_data_6sls_2.295395e+01mc_test.h5'
         
