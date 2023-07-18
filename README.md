@@ -18,9 +18,13 @@ This repository contains the implementation of the physics-informed forward mode
 
 ![Figure1_method](https://github.com/Mithunjha/DEEP-squared/assets/67052077/d0deba89-53f6-48b5-b766-ec86b3867423)
 
+## Dataset
+Find the dataset used in our work at : [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8161051.svg)](https://doi.org/10.5281/zenodo.8161051)
+
+
 ## Getting Started
 ### Installation
-The algorithms were developed in Pytorch Environment : [https://pytorch.org/](https://pytorch.org/)
+The deep learning algorithms were developed in Pytorch Environment : [https://pytorch.org/](https://pytorch.org/) and the forward model was implemented in MatLab.
 
 ```python
 pip install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio===0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
