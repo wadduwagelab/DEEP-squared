@@ -1,16 +1,20 @@
 # DEEP-squared: Deep Learning Powered De-scattering with Excitation Patterning
 
+Official implementation of "DEEP-squared: deep learning powered De-scattering with Excitation Patterning" (Light: Science & Applications, 2023).
+
 ## Citation
 If you find our work or this repository useful, please consider giving a star ⭐ and a citation.
 
 ```
-@misc{deepsquared2022,
-      title={DEEP2: Deep Learning Powered De-scattering with Excitation Patterning}, 
-      author={Navodini Wijethilake and Mithunjha Anandakumar and Cheng Zheng and Peter T. C. So and Murat Yildirim and Dushan N. Wadduwage},
-      year={2022},
-      eprint={2210.10892},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV}
+@article{deepsquared2023,
+  title={DEEP-squared: deep learning powered De-scattering with Excitation Patterning},
+  author={Navodini Wijethilake and Mithunjha Anandakumar and Cheng Zheng and Peter T. C. So and Murat Yildirim and Dushan N. Wadduwage},
+  journal={Light: Science & Applications},
+  volume={12},
+  issue={1},
+  pages={228},
+  year={2023},
+  doi = {https://doi.org/10.1038/s41377-023-01248-6}
 }
 ```
 
